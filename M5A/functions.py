@@ -20,7 +20,6 @@ b = 14
 d1 = double(a)     # 6
 d2 = double(b)     # 28
 
-
 t1 = triple(a)     # 9
 t2 = triple(b)     # 42
 
