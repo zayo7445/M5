@@ -4,10 +4,11 @@ import random
 
 
 def init_game():
-    print("~" * 38)
-    print("              Biathlon")
-    print("         a hit or miss game")
-    print("~" * 38)
+    width = 38
+    print("~" * width)
+    print("Biathlon".center(width))
+    print("a hit or miss game".center(width))
+    print("~" * width)
     print("You got 5 shots")
 
 
