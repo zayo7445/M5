@@ -75,8 +75,8 @@ class Lagra:
                 break
 
     def credentials(self) -> bool:
-        username = input("\nUsername: ")
-        password = input("Password: ")
+        username = input("\nUsername: ").strip()
+        password = input("Password: ").strip()
         data = self.data.get(username)
         if data and data.get("password") == password:
             self.user = User(username, password, data)
@@ -100,9 +100,9 @@ class Lagra:
 
     def register(self):
         while True:
-            username = input("\nUsername: ")
+            username = input("\nUsername: ").strip()
             if username not in self.data:
-                password = input("Password: ")
+                password = input("Password: ").strip()
                 self.data[username] = {"password": password, "items": []}
                 self.save_data()
                 print(f"\nAccount created for {username}")
