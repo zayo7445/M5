@@ -17,14 +17,14 @@ class User:
             print("Invalid item")
 
     def delete_item(self, item: str):
-        if item in self.data["items"]:
+        if item in self.data.get("items"):
             self.data["items"].remove(item)
             print(f"'{item}' removed from items")
         else:
             print("Item not found")
 
     def list_items(self):
-        if self.data["items"]:
+        if self.data.get("items"):
             print("\nThese are your items")
             for i, item in enumerate(self.data["items"], 1):
                 print(f"{i}) {item}")
@@ -118,7 +118,7 @@ class Lagra:
             option = self.get_option(["l", "r", "q"])
             if option == "l":
                 self.log_in()
-            if option == "r":
+            elif option == "r":
                 self.register()
             elif option == "q":
                 sys.exit()
