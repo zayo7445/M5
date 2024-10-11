@@ -116,12 +116,12 @@ class Lagra:
             print("r) Register")
             print("q) Quit\n")
             option = self.get_option(["l", "r", "q"])
+            if option == "l":
+                self.log_in()
             if option == "r":
                 self.register()
-                continue
             elif option == "q":
                 sys.exit()
-            self.log_in()
 
 
 if __name__ == "__main__":
