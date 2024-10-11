@@ -21,12 +21,12 @@ class User:
             self.data["items"].remove(item)
             print(f"'{item}' removed from items")
         else:
-            print("Item not found")
+            print(f"'{item}' not found in items")
 
     def list_items(self):
         if self.data.get("items"):
             print("\nThese are your items")
-            for i, item in enumerate(self.data["items"], 1):
+            for i, item in enumerate(self.data.get("items"), 1):
                 print(f"{i}) {item}")
         else:
             print("\nYou have no items")
@@ -39,10 +39,14 @@ class Lagra:
 
     @staticmethod
     def get_data(path=Path("data.json")) -> dict:
-        if path.exists():
+        if not path.exists():
+            print(f"'{path}' not found")
+            return {}
+        try:
             with open(path, "r") as file:
-                data = json.load(file)
-                return data
+                return json.load(file)
+        except json.JSONDecodeError as error:
+            print(f"'{path}' contains invalid JSON: {error}")
         return {}
 
     def save_data(self, path=Path("data.json")):
@@ -70,7 +74,7 @@ class Lagra:
             elif option == "d":
                 item = input("\nDelete item: ").strip()
                 self.user.delete_item(item)
-            elif option == "q":
+            else:
                 self.save_data()
                 break
 
@@ -120,7 +124,7 @@ class Lagra:
                 self.log_in()
             elif option == "r":
                 self.register()
-            elif option == "q":
+            else:
                 sys.exit()
 
 
